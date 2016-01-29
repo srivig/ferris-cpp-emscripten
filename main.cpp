@@ -1,3 +1,14 @@
+/* ---------------------------------------------------------------------------
+** This application is in the public domain, furnished "as is", without technical
+** support, and with no warranty, express or implied, as to its usefulness for
+** any purpose.
+**
+** Interactive Ferris Wheel demo with basic opengl glu methods
+**
+** Author: Srivigneshwar R Prasad
+** Month/Year:  Dec/2011
+** -------------------------------------------------------------------------*/
+
 #include <iostream>
 #include <stdlib.h>
 #include <freeglut.h>
@@ -5,7 +16,7 @@
 #include <string>
 #include <GLAUX.H>
 #include <math.h>
-//#pragma comment( lib, "glaux.lib" ) 
+//#pragma comment( lib, "glaux.lib" )
 using namespace std;
 
 //Variables//
@@ -68,7 +79,7 @@ void handleKeypress(unsigned char key, int x, int y) {
     {
     float xrotrad, yrotrad;
     yrotrad = (yrot / 180 * 3.141592654f);
-    xrotrad = (xrot / 180 * 3.141592654f); 
+    xrotrad = (xrot / 180 * 3.141592654f);
     xpos += float(sin(yrotrad)) ;
     zpos -= float(cos(yrotrad)) ;
     ypos -= float(sin(xrotrad)) ;
@@ -78,7 +89,7 @@ void handleKeypress(unsigned char key, int x, int y) {
     {
     float xrotrad, yrotrad;
     yrotrad = (yrot / 180 * 3.141592654f);
-    xrotrad = (xrot / 180 * 3.141592654f); 
+    xrotrad = (xrot / 180 * 3.141592654f);
     xpos -= float(sin(yrotrad));
     zpos += float(cos(yrotrad)) ;
     ypos += float(sin(xrotrad));
@@ -112,9 +123,9 @@ void initRendering() {
 	//AUX_RGBImageRec *texture[1];
     glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
-	glEnable(GL_LIGHTING); 
-	glEnable(GL_LIGHT0); 
-	glEnable(GL_LIGHT1); 
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
 	//glEnable(GL_LIGHT3);
 	//glEnable(GL_LIGHT4);
 	glEnable(GL_NORMALIZE);
@@ -124,8 +135,8 @@ void initRendering() {
 //load texture
 
 
-  
-  
+
+
 
 }
 
@@ -147,7 +158,7 @@ void handleResize(int w, int h) {
  //				Camera					  //
 ///////////////////////////////////////////
 void camera (void) {
-	//glPushMatrix();  
+	//glPushMatrix();
     glRotatef(xrot,1.0,0.0,0.0);  //rotate our camera on the x-axis (left and right)
    glRotatef(yrot,0.0,1.0,0.0);  //rotate our camera on the y-axis (up and down)
 	//glPopMatrix();
@@ -165,7 +176,7 @@ void DrawGround()
   glEnable(GL_BLEND);
   glPushMatrix();
   glColor3f(0.5f, 0.7f, 1.0f);
-  glTranslatef(0,0.0f,0);		
+  glTranslatef(0,0.0f,0);
   int size0=(int)(MAP*2);
   glBegin(GL_LINES);
 	for (int x = -size0; x < size0;x+=4)
@@ -222,7 +233,7 @@ void chair_base_model(){
      glVertex3f(-0.1,-0,1.2);
      glVertex3f(0.1,-0,1.2);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.59f, 0.36f, 0.17f);
      glVertex3f(0.1,0.8,1.2);
@@ -230,7 +241,7 @@ void chair_base_model(){
      glVertex3f(0.1,-0,-1.2);
      glVertex3f(0.1,0.8,-1.2);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.54f, 0.33f, 0.14f);
      glVertex3f(0.1,0.8,-1.2);
@@ -238,7 +249,7 @@ void chair_base_model(){
      glVertex3f(-0.1,-0,-1.2);
      glVertex3f(-0.1,0.8,-1.2);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.57f, 0.31f, 0.11f);
      glVertex3f(-0.1,0.8,1.2);
@@ -246,7 +257,7 @@ void chair_base_model(){
      glVertex3f(-0.1,-0,-1.2);
      glVertex3f(-0.1,-0,1.2);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.57f, 0.31f, 0.11f);
      glVertex3f(0.1,0.8,1.2);
@@ -254,7 +265,7 @@ void chair_base_model(){
      glVertex3f(-0.1,0.8,-1.2);
      glVertex3f(-0.1,0.8,1.2);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.54f, 0.36f, 0.15f);
      glVertex3f(0.1,-0,1.2);
@@ -270,7 +281,7 @@ void chair_base_model(){
 }
 
 void chairs(){
-	
+
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f,0.0f);
 	glRotatef(0.0,0.00,0.00,0.0);
@@ -289,17 +300,17 @@ void chairs(){
 	chair_base_model();
 	glPopMatrix();
 
-	glPushMatrix();	
+	glPushMatrix();
 	glTranslatef(-0.8f, 2.0f,-0.7f);
 	glRotatef(90.0,0.10,0.00,0.0);
 	gluCylinder(qobj, .02, .02, 0.5,15, 1);
 	glPopMatrix();
-	glPushMatrix();	
+	glPushMatrix();
 	glTranslatef(-0.8f, 2.0f,0.7f);
 	glRotatef(90.0,0.10,0.00,0.0);
 	gluCylinder(qobj, .02, .02, 0.5,15, 1);
 	glPopMatrix();
-	
+
 }
 
 
@@ -308,12 +319,12 @@ void chairs(){
  //				Draw WHEEL				  //
 ///////////////////////////////////////////
 void wheels(){
-	
+
 		   glColor3f(0.85f, 0.85f, 0.85f);
 
 			glPushMatrix();
 			glTranslatef(0.0f, 0.0f, 2.0f);
-			glutSolidTorus( .12,10,8,8); 
+			glutSolidTorus( .12,10,8,8);
 			glPopMatrix();
 
 			glPushMatrix();
@@ -322,22 +333,22 @@ void wheels(){
 			glPopMatrix();
 
 			glColor3f(0.57f, 0.31f, 0.11f);
-			glPushMatrix();	
+			glPushMatrix();
 			glTranslatef(0.0f, 0.0f,0.0f);
 			gluCylinder(qobj, 1.0, 1.0, 8, 8, 1);
 			glPopMatrix();
-	
+
 
 			glPushMatrix();
 			glTranslatef(0.0f, 0.0f,0.f);
-			gluDisk(qobj, 0, 1.0, 8, 11); 
+			gluDisk(qobj, 0, 1.0, 8, 11);
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(0.0f, 0.0f,8.f);
-			gluDisk(qobj, 0, 1.0, 8, 11); 
+			gluDisk(qobj, 0, 1.0, 8, 11);
 			glPopMatrix();
-		
+
 			glColor3f(0.85f, 0.85f, 0.85f);
 			glPushMatrix();
 			glTranslatef(0.0f, 0.0f,2.f);
@@ -349,7 +360,7 @@ void wheels(){
 			wheelSupport();
 			glPopMatrix();
 
-			//between 2 wheels 
+			//between 2 wheels
 			glPushMatrix();
 			glTranslatef(10.0f, 0.0f,2.0f);
 			gluCylinder(qobj, .07, .07, 4, 15, 1);
@@ -393,7 +404,7 @@ void wheels(){
 
 			//keeping the chairs //
 
-		
+
 }
 
 void wheelsAnimation(){
@@ -401,60 +412,60 @@ void wheelsAnimation(){
     glTranslatef(0.0f, 13.0f, 0.0f);
    glRotatef(_angle, 0.0f, 0.0f, -0.1f);
 	wheels();
-	
+
 		    glPushMatrix();
 		//glTranslatef(7.8f, -9.0f,0.0f);
 			glTranslatef(0.0f, -10.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(10.0f, 0.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(0.0f, 10.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(-10.0f, 0.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(-7.0f, 7.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(7.0f, 7.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 			glPushMatrix();
 			glTranslatef(7.0f, -7.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
 
 				glPushMatrix();
 			glTranslatef(-7.0f, -7.0f,0.0f);
-			glRotatef(_angle, 0.0f, 0.0f, 0.01f);		
+			glRotatef(_angle, 0.0f, 0.0f, 0.01f);
 			glTranslatef(0.8f, -2.0f,4.0f);
 			chairs();
 			glPopMatrix();
@@ -473,7 +484,7 @@ void wheelsSupportGroundBase(){
      glVertex3f(-0.5,-0,0.5);
      glVertex3f(0.5,-0,0.5);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.59f, 0.36f, 0.17f);
      glVertex3f(0.5,15,0.5);
@@ -481,7 +492,7 @@ void wheelsSupportGroundBase(){
      glVertex3f(0.5,-0,-0.5);
      glVertex3f(0.5,15,-0.5);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.54f, 0.33f, 0.14f);
      glVertex3f(0.5,15,-0.5);
@@ -489,7 +500,7 @@ void wheelsSupportGroundBase(){
      glVertex3f(-0.5,-0,-0.5);
      glVertex3f(-0.5,15,-0.5);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.57f, 0.31f, 0.11f);
      glVertex3f(-0.5,15,0.5);
@@ -497,7 +508,7 @@ void wheelsSupportGroundBase(){
      glVertex3f(-0.5,-0,-0.5);
      glVertex3f(-0.5,-0,0.5);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.57f, 0.31f, 0.11f);
      glVertex3f(0.5,15,0.5);
@@ -505,7 +516,7 @@ void wheelsSupportGroundBase(){
      glVertex3f(-0.5,15,-0.5);
      glVertex3f(-0.5,15,0.5);
    glEnd();
-   
+
    glBegin(GL_POLYGON);
      glColor3f(0.54f, 0.36f, 0.15f);
      glVertex3f(0.5,-0,0.5);
@@ -517,26 +528,26 @@ void wheelsSupportGroundBase(){
 
 void wheelsSupportGround(){
 	//    glColor3f(0.85f, 0.85f, 0.85f);
-		glPushMatrix(); 
+		glPushMatrix();
 		glTranslatef(9.0f, 0.0f,1.0f);
 		glRotatef(35.0,0.00,0.00,0.10);
  		wheelsSupportGroundBase();
 		glPopMatrix();
 
-		glPushMatrix(); 
+		glPushMatrix();
 		glTranslatef(-9.0f, 0.0f,1.0f);
 		glRotatef(-35.0,0.00,0.00,0.10);
  		wheelsSupportGroundBase();
 		glPopMatrix();
 
-		
-		glPushMatrix(); 
+
+		glPushMatrix();
 		glTranslatef(-9.0f, 0.0f,7.0f);
 		glRotatef(-35.0,0.00,0.00,0.10);
  		wheelsSupportGroundBase();
 		glPopMatrix();
 
-		glPushMatrix(); 
+		glPushMatrix();
 		glTranslatef(9.0f, 0.0f,7.0f);
 		glRotatef(35.0,0.00,0.00,0.10);
  		wheelsSupportGroundBase();
@@ -550,7 +561,7 @@ void display() {
 	//
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
+
 //gluLookAt (-30,20,-21.0,0,0,0,0,1,0 ) ;
 gluLookAt (0,0,-0.10,0,0,0,0,1,0 ) ;
 
@@ -564,10 +575,10 @@ wheelsSupportGround();
 wheelsAnimation();
 
 	////Add ambient light
-	
+
 	//GLfloat ambientColor[] = {0.2f, 0.2f, 0.2f, 1.0f}; //Color (0.2, 0.2, 0.2)
 	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientColor);
-	
+
 	////Add positioned light
 
 	GLfloat lightColor0[] = {0.5f, 0.5f, 0.5f, 1.0f}; //Color (0.5, 0.5, 0.5)
@@ -581,7 +592,7 @@ wheelsAnimation();
 	GLfloat lightPos1[] = {-1.0f, 0.5f, 0.5f, 0.0f};
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
-	
+
 	//char text[10];
 	//itoa (fast,text,10);
 	////text="sample text";
@@ -597,7 +608,7 @@ void update(int value) {
 	if (_angle > 0) {
 		_angle += 0;
 	}
-	
+
 	glutPostRedisplay();
 	glutTimerFunc(10, update, 0);
 }
@@ -607,7 +618,7 @@ int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 600);
-	
+
 	//Create the window
 	glutCreateWindow("Assignment - Ferris Wheel");
 
@@ -624,8 +635,7 @@ int main(int argc, char** argv) {
 	// glutIdleFunc(drawWheel);
 
 	glutTimerFunc(25, update, 0); //Add a timer
-	
+
 	glutMainLoop();
 	return 0;
 }
-
